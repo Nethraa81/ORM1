@@ -1,5 +1,5 @@
 # Ex02 Django ORM Web Application
-## Date: 
+## Date: 23.04.2025
 
 ## AIM
 To develop a Django application to store and retrieve data from a Movies Database using Object Relational Mapping(ORM).
@@ -26,40 +26,32 @@ Execute Django admin and create details for 10 books
 ```
 admin.py
 from django.contrib import admin
+from .models import Movies,MoviesAdmin
+admin.site.register(Movies,MoviesAdmin)
 
-# Register your models here.
-from .models import Loan,LoanAdmin
-
-admin.site.register(Loan,LoanAdmin)
 
 models.py
 
 from django.db import models
 from django.contrib import admin
+class Movies(models.Model):
+    userid=models.IntegerField(primary_key=True)
+    username=models.CharField(max_length=30)
+    mobileno=models.IntegerField()
+    emailid=models.EmailField()
+    moviename=models.CharField(max_length=50)
+    noofseats=models.IntegerField()
+    date=models.DateField()
 
-class Loan(models.Model):
-    loan_id = models.AutoField(primary_key=True)
-    customer_name = models.CharField(max_length=100)
-    loan_amount = models.DecimalField(max_digits=10, decimal_places=2)
-    interest_rate = models.DecimalField(max_digits=5, decimal_places=2)
-    loan_term = models.IntegerField()
-    disbursement_date = models.DateField()
-
-class LoanAdmin(admin.ModelAdmin):
-    list_display=('loan_id','customer_name','loan_amount','interest_rate','loan_term','disbursement_date')
-
+class MoviesAdmin(admin.ModelAdmin):
+    list_display=('username','moviename','noofseats','emailid)
 ```
 
 
 
 
 ## OUTPUT
-
-![Screenshot 2025-04-23 165638](https://github.com/user-attachments/assets/0fca75b6-ecb4-4a2e-a4d6-4d11adb41560)
-
-
-
-
+![web orm](https://github.com/user-attachments/assets/21477ed3-40ec-4337-8ec5-b9c2afbee509)
 
 ## RESULT
 Thus the program for creating movies database using ORM hass been executed successfully
